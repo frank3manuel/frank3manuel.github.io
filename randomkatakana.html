@@ -1,24 +1,39 @@
 <html>
-	<body>
+	<body onload="startTimer()">
 		<script>
-			var chars = "サマヤラワニリヲクスツヌフムセレオコソノホ";
 
 			function randomize() {
-				var numberOfCharacters = 3;
+				var numberOfCharacters = document.getElementById("numberOfCharacters").value;
+				var chars = document.getElementById("characters").value;
 				var s = "";
 				for (let i = 0; i < numberOfCharacters; i++) {
 					s += chars.charAt(getRandomInt(chars.length-1))
 				}
-				console.log(s)
 				document.getElementById("three").innerHTML = s;
+			}
+			var interval = null;
+
+			function startTimer() {
+				stopTimer();
+				var seconds = document.getElementById("seconds").value;
+				interval = setInterval(randomize, seconds * 1000)
+				return interval;
+			}
+
+			function stopTimer() {
+				clearInterval(interval)
 			}
 
 			function getRandomInt(max) {
 			 	return Math.floor(Math.random() * max);
 			}
 
+			document.onLoad
 		</script>
 		<h1 id="three">The three characters will appear here</h1>
-		<button onclick="randomize()">randomize</button>
+		<button onclick="randomize()">randomize</button> 
+		<br/> Number of characters to display: <input id="numberOfCharacters" value="3"/>
+		<br/> Auto-change every <input id="seconds" size="1" value="6"/> seconds. <button onclick="startTimer()">Start</button> <button onclick="stopTimer()">Stop</button> 
+		<br/> Characters to rotate: <textarea id="characters">サマヤラワニリヲクスツヌフムセレオコソノホ</textarea>
 	</body>
 </html>
