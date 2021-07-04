@@ -1,0 +1,24 @@
+<html>
+	<body>
+		<script>
+			var chars = "サマヤラワニリヲクスツヌフムセレオコソノホ";
+
+			function randomize() {
+				var numberOfCharacters = 3;
+				var s = "";
+				for (let i = 0; i < numberOfCharacters; i++) {
+					s += chars.charAt(getRandomInt(chars.length-1))
+				}
+				console.log(s)
+				document.getElementById("three").innerHTML = s;
+			}
+
+			function getRandomInt(max) {
+			 	return Math.floor(Math.random() * max);
+			}
+
+		</script>
+		<h1 id="three">The three characters will appear here</h1>
+		<button onclick="randomize()">randomize</button>
+	</body>
+</html>
