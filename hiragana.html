@@ -1,22 +1,291 @@
 <html>
 	<head>
 		<script>
-			var adjectives_i = [["big","ookii","大きい","おおきい"],["small","chiisai","小さい","ちいさい"],["cheap","yasui","安い","やすい"],["expensive","takai","高い","たかい"],["dark","kurai","暗い","くらい"],["light","akarui","明るい","あかるい"],["delicious","oishii","","おいしい"],["bad tasting","mazui","","まずい"],["difficult","muzukashii","難しい","むずかしい"],["good","ii/yoi","いい / 良い","いい / よい"],["bad","warui","悪い","わるい"],["heavy","omoi","重い","おもい"],["light (in weight)","karui","軽い","かるい"],["hot","atsui","熱い","あつい"],["hot (weather)","atsui","暑い","あつい"],["warm","atatakai","温かい","あたたかい"],["warm (weather)","atatakai","暖かい","あたたかい"],["cold","tsumetai","冷たい","つめたい"],["cold (weather)","samui","寒い","さむい"],["hot and humid","mushiatsui","蒸し暑い","むしあつい"],["long","nagai","長い","ながい"],["short (in length)","mijikai","短い","みじかい"],["new","atarashii","新しい","あたらしい"],["old","furui","古い","ふるい"],["narrow","semai","狭い","せまい"],["wide","hiroi","広い","ひろい"],["tall","takai","高い","たかい"],["short (in height)","hikui","低い","ひくい"],["quick","hayai","速い","はやい"],["slow","osoi","遅い","おそい"],["interesting","omoshiroi","面白い","おもしろい"],["busy","isogashii","忙しい","いそがしい"],["fun","tanoshii","楽しい","たのしい"],["cool/attractive/has good form","kakkouii","格好いい","かっこういい"],["early","hayai","早い","はやい"],["late","osoi","晩い","おそい"]]
-			var adjectives_na = [["quiet","shizuka (na)","静か(な)","しずか(な)"],["cool/nice","suteki (na)","素敵(な)","すてき(な)"],["healthy","genki (na)","元気(な)","げんき(な)"],["easy","kantan (na)","簡単(な)","かんたん(な)"],["clean/pretty","kirei (na)","","きれい(な)"],["strange","hen (na)","変(な)","へん(な)"]]
-			var adverbs = [["very","totemo","","とても"],["more","motto","","もっと"]]
-			var sentences = [["I'm very busy.","Totemo isogashii desu.","とても忙しいです。","とても いそがしい です。"],["It's better.","Motto ii desu.","もっといいです。","もっと いい です。"]]
-			var verbs = [["arrive","tsukimasu","着きます","つきます"],["be / have / exist (animate objects)","imasu","居ます","います"],["begin","hajimarimasu","始まります","はじまります"],["buy","kaimasu","買います","かいます"],["clean","souji o shimasu","掃除をします","そうじをします"],["come","kimasu","来ます","きます"],["cry","nakimasu","泣きます","なきます"],["do","shimasu","","します"],["do a part time job","arubaito o shimasu","","アルバイトをします"],["do one's best","ganbarimasu","頑張ります","がんばります"],["drink","nomimasu","飲みます","のみます"],["eat","tabemasu","食べます","たべます"],["enter","hairimasu","入ります","はいります"],["finish / end","owarimasu","終わります","おわります"],["go","ikimasu","行きます","いきます"],["go shopping","kaimono o shimasu","買い物をします","かいものをします"],["have","mochimasu","持ちます","もちます"],["have / exist (inanimate objects)","arimasu","","あります"],["is / =","desu","","です"],["know","shirimasu","知ります","しります"],["laugh","waraimasu","笑います","わらいます"],["leave","dekakemasu","出かけます","でかけます"],["listen","kikimasu","聞きます","ききます"],["make","tsukurimasu","作ります","つくります"],["meet","aimasu","会います","あいます"],["play (hang out)","asobimasu","遊びます","あそびます"],["play/do a sport","(name of sport) o shimasu","","sport をします"],["practice","renshuu o shimasu","練習をします","れんしゅうをします"],["read","yomimasu","読みます","よみます"],["return / go home","kaerimasu","帰ります","かえります"],["say","iimasu","言います","いいます"],["send","okurimasu","送ります","おくります"],["sing","utaimasu","歌います","うたいます"],["sit","suwarimasu","座ります","すわります"],["sleep / go to bed","nemasu","寝ます","ねます"],["speak / talk","hanashimasu","話します","はなします"],["stand","tachimasu","立ちます","たちます"],["stop","tomarimasu","止まります","とまります"],["study","benkyou o shimasu","勉強をします","べんきょうをします"],["swim","oyogimasu","泳ぎます","およぎます"],["take a bath","ofuro ni hairimasu","お風呂に入ります","おふろにはいります"],["take a picture","shashin o torimasu","写真を撮ります","しゃしんをとります"],["take a shower","shawaa o abimasu","シャワーを浴びます","シャワーをあびます"],["teach","oshiemasu","教えます","おしえます"],["think","omoimasu","思います","おもいます"],["think","kangaemasu","考えます","かんがえます"],["to call","yobimasu","呼びます","よびます"],["to telephone","denwa o shimasu","電話をします","でんわをします"],["understand","wakarimasu","分かります","わかります"],["wait","machimasu","待ちます","まちます"],["wake up","okimasu","起きます","おきます"],["walk","arukimasu","歩きます","あるきます"],["watch / see / look","mimasu","見ます","みます"],["work","hatarakimasu","働きます","はたらきます"],["write","kakimasu","書きます","かきます"]]
-			var animals = [["animals","doubutsu","動物","どうぶつ"],["bear","kuma","熊","くま"],["bird","tori","鳥","とり"],["cat","neko","猫","ねこ"],["cow","ushi","牛","うし"],["crane","tsuru","鶴","つる"],["dog","inu","犬","いぬ"],["dolphin","iruka","","いるか"],["duck, domestic","ahiru","","あひる"],["duck, wild","kamo","","かも"],["elephant","zou","象","ぞう"],["fish","sakana","魚","さかな"],["fox","kitsune","狐","きつね"],["frog","kaeru","","かえる"],["giraffe","kirin","","きりん"],["goat","yagi","","やぎ"],["goose","gachou","","がちょう"],["horse","uma","馬","うま"],["kitten","koneko","子猫","こねこ"],["lion","raion","","ライオン"],["monkey","saru","猿","さる"],["mouse","nezumi","","ねずみ"],["octopus","tako","","たこ"],["pig","buta","豚","ぶた"],["raccoon","araiguma","","あらいぐま"],["raccoon-dog","tanuki","狸","たぬき"],["rat","oonezumi","","おおねずみ"],["seal","azarashi","","あざらし"],["shark","same","","さめ"],["sheep","hitsuji","羊","ひつじ"],["snake","hebi","蛇","へび"],["squid","ika","","いか"],["squirrel","risu","","りす"],["tiger","tora","虎","とら"],["turtle","kame","亀","かめ"],["whale","kujira","","くじら"],["wolf","ookami","狼","おおかみ"],["zebra","shimauma","","しまうま"]]
-			var body_parts = [["body","karada","体","からだ"],["arm","ude","腕","うで"],["back","senaka","背中","せなか"],["bladder","boukou","膀胱","ぼうこう"],["blood","chi/ketsueki","血 / 血液","ち / けつえき"],["bone","hone","骨","ほね"],["brain","nou","脳","のう"],["cheek","hoo","頬","ほう"],["chin","ago","顎","あご"],["ears","mimi","耳","みみ"],["elbow","hiji","肘","ひじ"],["eyebrow","mayuge","眉毛","まゆげ"],["eyelash","matsuge","睫","まつげ"],["eyes","me","目","め"],["face","kao","顔","かお"],["fingers","yubi","指","ゆび"],["foot","ashi","足","あし"],["forhead","hitai","額","ひたい"],["hair","kaminoke","髪の毛","かみのけ"],["hands","te","手","て"],["head","atama","頭","あたま"],["heart","shinzou","心臓","しんぞう"],["intestines","chou","腸","ちょう"],["kidney","jinzou","腎臓","じんぞう"],["knees","hiza","膝","ひざ"],["legs","ashi","脚","あし"],["lips","kuchibiru","唇","くちびる"],["liver","kanzou","肝臓","かんぞう"],["mouth","kuchi","口","くち"],["muscle","kinniku","筋肉","きんにく"],["mustache/beard","hige","","ひげ"],["neck","kubi","首","くび"],["nose","hana","鼻","はな"],["shoulder","kata","肩","かた"],["stomach","onaka/i","お腹 / 胃","おなか / い"],["teeth","ha","歯","は"],["throat","nodo","","のど"],["toes","ashiyubi","足指","あしゆび"],["tongue","shita","舌","した"]]
-			var colors = [["red","aka","赤","あか"],["yellow","kiiro","黄色","きいろ"],["blue","ao","青","あお"],["green","midori iro","緑色","みどりいろ"],["purple","murasaki iro","紫色","むらさきいろ"],["orange","orenji iro","オレンジ色","オレンジいろ"],["peach","hada iro","肌色","はだいろ"],["pink","pinku / momo iro","ピンク / 桃色","ピンク / ももいろ"],["brown","cha iro","茶色","ちゃいろ"],["black","kuro","黒","くろ"],["white","shiro","白","しろ"],["gray","nezumi iro / hai iro","ねずみ色 / 灰色","ねずみいろ / はいいろ"],["light blue","mizu iro","水色","みずいろ"],["yellow-green","kimidori iro","黄緑色","きみどりいろ"]]
-			var weather = [["clear skies","hare","晴れ","はれ"],["cloud","kumo","雲","くも"],["cloudy","kumori","曇り","くもり"],["cold","samui","寒い","さむい"],["cool","suzushii","涼しい","すずしい"],["fog","kiri","霧","きり"],["hot","atsui","暑い","あつい"],["humid","mushiatsui","蒸し暑い","むしあつい"],["humidity","shikke","湿気","しっけ"],["ice","koori","氷","こおり"],["lightning","kaminari","雷","かみなり"],["rain","ame","雨","あめ"],["rainy season","tsuyu","梅雨","つゆ"],["snow","yuki","雪","ゆき"],["sun","taiyou","太陽","たいよう"],["thunder","kaminari","雷","かみなり"],["to clear","haremasu","晴れます","はれます"],["to rain","ame ga furimasu","雨が降ります","あめがふります"],["to snow","yuki ga furimasu","雪が降ります","ゆきがふります"],["typhoon","taifuu","台風","たいふう"],["warm","atatakai","暖かい","あたたかい"],["weather","tenki","天気","てんき"],["wind","kaze","風","かぜ"]]
-			var days = [["Sunday","nichiyoubi","日曜日","にちようび"],["Monday","getsuyoubi","月曜日","げつようび"],["Tuesday","kayoubi","火曜日","かようび"],["Wednesday","suiyoubi","水曜日","すいようび"],["Thursday","mokuyoubi","木曜日","もくようび"],["Friday","kinyoubi","金曜日","きんようび"],["Saturday","doyoubi","土曜日","どようび"],["weekday","heijitsu","平日","へいじつ"],["weekend","shuumatsu","週末","しゅうまつ"]]
-			var months = [["January","ichigatsu","一月","いちがつ"],["February","nigatsu","二月","にがつ"],["March","sangatsu","三月","さんがつ"],["April","shigatsu","四月","しがつ"],["May","gogatsu","五月","ごがつ"],["June","rokugatsu","六月","ろくがつ"],["July","shichigatsu","七月","しちがつ"],["August","hachigatsu","八月","はちがつ"],["September","kugatsu","九月","くがつ"],["October","juugatsu","十月","じゅうがつ"],["November","juuichigatsu","十一月","じゅういちがつ"],["December","juunigatsu","十二月","じゅうにがつ"]]
+			var adjectives_i = [
+				["big","ookii","大きい","おおきい"],
+				["small","chiisai","小さい","ちいさい"],
+				["cheap","yasui","安い","やすい"],
+				["expensive","takai","高い","たかい"],
+				["dark","kurai","暗い","くらい"],
+				["light","akarui","明るい","あかるい"],
+				["delicious","oishii","","おいしい"],
+				["bad tasting","mazui","","まずい"],
+				["difficult","muzukashii","難しい","むずかしい"],
+				["good","ii/yoi","いい / 良い","いい / よい"],
+				["bad","warui","悪い","わるい"],
+				["heavy","omoi","重い","おもい"],
+				["light (in weight)","karui","軽い","かるい"],
+				["hot","atsui","熱い","あつい"],
+				["hot (weather)","atsui","暑い","あつい"],
+				["warm","atatakai","温かい","あたたかい"],
+				["warm (weather)","atatakai","暖かい","あたたかい"],
+				["cold","tsumetai","冷たい","つめたい"],
+				["cold (weather)","samui","寒い","さむい"],
+				["hot and humid","mushiatsui","蒸し暑い","むしあつい"],
+				["long","nagai","長い","ながい"],
+				["short (in length)","mijikai","短い","みじかい"],
+				["new","atarashii","新しい","あたらしい"],
+				["old","furui","古い","ふるい"],
+				["narrow","semai","狭い","せまい"],
+				["wide","hiroi","広い","ひろい"],
+				["tall","takai","高い","たかい"],
+				["short (in height)","hikui","低い","ひくい"],
+				["quick","hayai","速い","はやい"],
+				["slow","osoi","遅い","おそい"],
+				["interesting","omoshiroi","面白い","おもしろい"],
+				["busy","isogashii","忙しい","いそがしい"],
+				["fun","tanoshii","楽しい","たのしい"],
+				["cool/attractive/has good form","kakkouii","格好いい","かっこういい"],
+				["early","hayai","早い","はやい"],
+				["late","osoi","晩い","おそい"]]
+			var adjectives_na = [
+				["quiet","shizuka (na)","静か(な)","しずか(な)"],
+				["cool/nice","suteki (na)","素敵(な)","すてき(な)"],
+				["healthy","genki (na)","元気(な)","げんき(な)"],
+				["easy","kantan (na)","簡単(な)","かんたん(な)"],
+				["clean/pretty","kirei (na)","","きれい(な)"],
+				["strange","hen (na)","変(な)","へん(な)"]]
+			var adverbs = [
+				["very","totemo","","とても"],
+				["more","motto","","もっと"]]
+			var sentences = [
+				["I'm very busy.","Totemo isogashii desu.","とても忙しいです。","とても いそがしい です。"],
+				["It's better.","Motto ii desu.","もっといいです。","もっと いい です。"]]
+			var verbs = [
+				["arrive","tsukimasu","着きます","つきます"],
+				["be / have / exist (animate objects)","imasu","居ます","います"],
+				["begin","hajimarimasu","始まります","はじまります"],
+				["buy","kaimasu","買います","かいます"],
+				["clean","souji o shimasu","掃除をします","そうじをします"],
+				["come","kimasu","来ます","きます"],
+				["cry","nakimasu","泣きます","なきます"],
+				["do","shimasu","","します"],
+				["do a part time job","arubaito o shimasu","","アルバイトをします"],
+				["do one's best","ganbarimasu","頑張ります","がんばります"],
+				["drink","nomimasu","飲みます","のみます"],
+				["eat","tabemasu","食べます","たべます"],
+				["enter","hairimasu","入ります","はいります"],
+				["finish / end","owarimasu","終わります","おわります"],
+				["go","ikimasu","行きます","いきます"],
+				["go shopping","kaimono o shimasu","買い物をします","かいものをします"],
+				["have","mochimasu","持ちます","もちます"],
+				["have / exist (inanimate objects)","arimasu","","あります"],
+				["is / =","desu","","です"],
+				["know","shirimasu","知ります","しります"],
+				["laugh","waraimasu","笑います","わらいます"],
+				["leave","dekakemasu","出かけます","でかけます"],
+				["listen","kikimasu","聞きます","ききます"],
+				["make","tsukurimasu","作ります","つくります"],
+				["meet","aimasu","会います","あいます"],
+				["play (hang out)","asobimasu","遊びます","あそびます"],
+				["play/do a sport","(name of sport) o shimasu","","sport をします"],
+				["practice","renshuu o shimasu","練習をします","れんしゅうをします"],
+				["read","yomimasu","読みます","よみます"],
+				["return / go home","kaerimasu","帰ります","かえります"],
+				["say","iimasu","言います","いいます"],
+				["send","okurimasu","送ります","おくります"],
+				["sing","utaimasu","歌います","うたいます"],
+				["sit","suwarimasu","座ります","すわります"],
+				["sleep / go to bed","nemasu","寝ます","ねます"],
+				["speak / talk","hanashimasu","話します","はなします"],
+				["stand","tachimasu","立ちます","たちます"],
+				["stop","tomarimasu","止まります","とまります"],
+				["study","benkyou o shimasu","勉強をします","べんきょうをします"],
+				["swim","oyogimasu","泳ぎます","およぎます"],
+				["take a bath","ofuro ni hairimasu","お風呂に入ります","おふろにはいります"],
+				["take a picture","shashin o torimasu","写真を撮ります","しゃしんをとります"],
+				["take a shower","shawaa o abimasu","シャワーを浴びます","シャワーをあびます"],
+				["teach","oshiemasu","教えます","おしえます"],
+				["think","omoimasu","思います","おもいます"],
+				["think","kangaemasu","考えます","かんがえます"],
+				["to call","yobimasu","呼びます","よびます"],
+				["to telephone","denwa o shimasu","電話をします","でんわをします"],
+				["understand","wakarimasu","分かります","わかります"],
+				["wait","machimasu","待ちます","まちます"],
+				["wake up","okimasu","起きます","おきます"],
+				["walk","arukimasu","歩きます","あるきます"],
+				["watch / see / look","mimasu","見ます","みます"],
+				["work","hatarakimasu","働きます","はたらきます"],
+				["write","kakimasu","書きます","かきます"]]
+			var animals = [
+				["animals","doubutsu","動物","どうぶつ"],
+				["bear","kuma","熊","くま"],
+				["bird","tori","鳥","とり"],
+				["cat","neko","猫","ねこ"],
+				["cow","ushi","牛","うし"],
+				["crane","tsuru","鶴","つる"],
+				["dog","inu","犬","いぬ"],
+				["dolphin","iruka","","いるか"],
+				["duck, domestic","ahiru","","あひる"],
+				["duck, wild","kamo","","かも"],
+				["elephant","zou","象","ぞう"],
+				["fish","sakana","魚","さかな"],
+				["fox","kitsune","狐","きつね"],
+				["frog","kaeru","","かえる"],
+				["giraffe","kirin","","きりん"],
+				["goat","yagi","","やぎ"],
+				["goose","gachou","","がちょう"],
+				["horse","uma","馬","うま"],
+				["kitten","koneko","子猫","こねこ"],
+				["lion","raion","","ライオン"],
+				["monkey","saru","猿","さる"],
+				["mouse","nezumi","","ねずみ"],
+				["octopus","tako","","たこ"],
+				["pig","buta","豚","ぶた"],
+				["raccoon","araiguma","","あらいぐま"],
+				["raccoon-dog","tanuki","狸","たぬき"],
+				["rat","oonezumi","","おおねずみ"],
+				["seal","azarashi","","あざらし"],
+				["shark","same","","さめ"],
+				["sheep","hitsuji","羊","ひつじ"],
+				["snake","hebi","蛇","へび"],
+				["squid","ika","","いか"],
+				["squirrel","risu","","りす"],
+				["tiger","tora","虎","とら"],
+				["turtle","kame","亀","かめ"],
+				["whale","kujira","","くじら"],
+				["wolf","ookami","狼","おおかみ"],
+				["zebra","shimauma","","しまうま"]]
+			var body_parts = [
+				["body","karada","体","からだ"],
+				["arm","ude","腕","うで"],
+				["back","senaka","背中","せなか"],
+				["bladder","boukou","膀胱","ぼうこう"],
+				["blood","chi/ketsueki","血 / 血液","ち / けつえき"],
+				["bone","hone","骨","ほね"],
+				["brain","nou","脳","のう"],
+				["cheek","hoo","頬","ほう"],
+				["chin","ago","顎","あご"],
+				["ears","mimi","耳","みみ"],
+				["elbow","hiji","肘","ひじ"],
+				["eyebrow","mayuge","眉毛","まゆげ"],
+				["eyelash","matsuge","睫","まつげ"],
+				["eyes","me","目","め"],
+				["face","kao","顔","かお"],
+				["fingers","yubi","指","ゆび"],
+				["foot","ashi","足","あし"],
+				["forhead","hitai","額","ひたい"],
+				["hair","kaminoke","髪の毛","かみのけ"],
+				["hands","te","手","て"],
+				["head","atama","頭","あたま"],
+				["heart","shinzou","心臓","しんぞう"],
+				["intestines","chou","腸","ちょう"],
+				["kidney","jinzou","腎臓","じんぞう"],
+				["knees","hiza","膝","ひざ"],
+				["legs","ashi","脚","あし"],
+				["lips","kuchibiru","唇","くちびる"],
+				["liver","kanzou","肝臓","かんぞう"],
+				["mouth","kuchi","口","くち"],
+				["muscle","kinniku","筋肉","きんにく"],
+				["mustache/beard","hige","","ひげ"],
+				["neck","kubi","首","くび"],
+				["nose","hana","鼻","はな"],
+				["shoulder","kata","肩","かた"],
+				["stomach","onaka/i","お腹 / 胃","おなか / い"],
+				["teeth","ha","歯","は"],
+				["throat","nodo","","のど"],
+				["toes","ashiyubi","足指","あしゆび"],
+				["tongue","shita","舌","した"]]
+			var colors = [
+				["red","aka","赤","あか"],
+				["yellow","kiiro","黄色","きいろ"],
+				["blue","ao","青","あお"],
+				["green","midori iro","緑色","みどりいろ"],
+				["purple","murasaki iro","紫色","むらさきいろ"],
+				["orange","orenji iro","オレンジ色","オレンジいろ"],
+				["peach","hada iro","肌色","はだいろ"],
+				["pink","pinku / momo iro","ピンク / 桃色","ピンク / ももいろ"],
+				["brown","cha iro","茶色","ちゃいろ"],
+				["black","kuro","黒","くろ"],
+				["white","shiro","白","しろ"],
+				["gray","nezumi iro / hai iro","ねずみ色 / 灰色","ねずみいろ / はいいろ"],
+				["light blue","mizu iro","水色","みずいろ"],
+				["yellow-green","kimidori iro","黄緑色","きみどりいろ"]]
+			var weather = [
+				["clear skies","hare","晴れ","はれ"],
+				["cloud","kumo","雲","くも"],
+				["cloudy","kumori","曇り","くもり"],
+				["cold","samui","寒い","さむい"],
+				["cool","suzushii","涼しい","すずしい"],
+				["fog","kiri","霧","きり"],
+				["hot","atsui","暑い","あつい"],
+				["humid","mushiatsui","蒸し暑い","むしあつい"],
+				["humidity","shikke","湿気","しっけ"],
+				["ice","koori","氷","こおり"],
+				["lightning","kaminari","雷","かみなり"],
+				["rain","ame","雨","あめ"],
+				["rainy season","tsuyu","梅雨","つゆ"],
+				["snow","yuki","雪","ゆき"],
+				["sun","taiyou","太陽","たいよう"],
+				["thunder","kaminari","雷","かみなり"],
+				["to clear","haremasu","晴れます","はれます"],
+				["to rain","ame ga furimasu","雨が降ります","あめがふります"],
+				["to snow","yuki ga furimasu","雪が降ります","ゆきがふります"],
+				["typhoon","taifuu","台風","たいふう"],
+				["warm","atatakai","暖かい","あたたかい"],
+				["weather","tenki","天気","てんき"],
+				["wind","kaze","風","かぜ"]]
+			var days = [
+				["Sunday","nichiyoubi","日曜日","にちようび"],
+				["Monday","getsuyoubi","月曜日","げつようび"],
+				["Tuesday","kayoubi","火曜日","かようび"],
+				["Wednesday","suiyoubi","水曜日","すいようび"],
+				["Thursday","mokuyoubi","木曜日","もくようび"],
+				["Friday","kinyoubi","金曜日","きんようび"],
+				["Saturday","doyoubi","土曜日","どようび"],
+				["weekday","heijitsu","平日","へいじつ"],
+				["weekend","shuumatsu","週末","しゅうまつ"]]
+			var months = [
+				["January","ichigatsu","一月","いちがつ"],
+				["February","nigatsu","二月","にがつ"],
+				["March","sangatsu","三月","さんがつ"],
+				["April","shigatsu","四月","しがつ"],
+				["May","gogatsu","五月","ごがつ"],
+				["June","rokugatsu","六月","ろくがつ"],
+				["July","shichigatsu","七月","しちがつ"],
+				["August","hachigatsu","八月","はちがつ"],
+				["September","kugatsu","九月","くがつ"],
+				["October","juugatsu","十月","じゅうがつ"],
+				["November","juuichigatsu","十一月","じゅういちがつ"],
+				["December","juunigatsu","十二月","じゅうにがつ"]]
 
-			var all = {}
+			var all = [].concat(adjectives_i, adjectives_na, adverbs, sentences, verbs, animals, body_parts, colors, weather, days, months);
+
+			function randomize() {
+				var numberOfCharacters = all.length;
+				var o = all[getRandomInt(all.length-1)];
+
+				// document.getElementById("three").innerHTML = s;
+				displayObject(o);
+			}
+
+			function displayObject(o) {
+				document.getElementById("kanji").innerHTML = o[2];
+				document.getElementById("hiragana").innerHTML = o[3];
+				document.getElementById("english").innerHTML = o[0];
+				document.getElementById("romaji").innerHTML = o[1];
+			}
+
+			var interval = null;
+
+			function startTimer() {
+				stopTimer();
+				var seconds = document.getElementById("seconds").value;
+				interval = setInterval(randomize, seconds * 1000)
+				return interval;
+			}
+
+			function stopTimer() {
+				clearInterval(interval)
+			}
+
+			function getRandomInt(max) {
+			 	return Math.floor(Math.random() * max);
+			}
+
 		</script>
 		<style>
-			h1.focus {
+			td.focus {
 				font-size: 100;
 				/*font-family: "ヒラギノ角ゴ Pro W3";*/
 				/*
@@ -30,31 +299,48 @@
 				sans-serif;
 				*/
 			}
+
+			#kanji, #english{
+				font-size: 50;
+			}
 		</style>
 	</head>
 	<body>
 		<table style="width: 100%; text-align: center;">
 			<tr>
 				<td><<</td>
-				<td style="width: 80%; background-color: blue; text-align: center;">
-					<table style="width: 100%; background-color: pink; text-align: center;">
-						<tr><td></td></tr>
+				<td style="width: 80%; background-color: ablue; text-align: center;">
+					<table style="width: 100%; background-color: apink; text-align: center;">
 						<tr>
-							<td>
-								<h1 class="kanji">十二月</h1>
-								<h1 class="hiragana focus">じゅうにがつ</h1>
-								<h1 class="english">December</h1>
-								<h1 class="romaji">juunigatsu</h1>
+							<td id="kanji">
+								kanji
 							</td>
 						</tr>
-						<tr><td></td></tr>
+						<tr>
+							<td id="hiragana" class="focus">
+								hiragana
+							</td>
+						</tr>
+						<tr>
+							<td id="english">
+								english
+							</td>
+						</tr>
+						<tr>
+							<td id="romaji">
+								romaji
+							</td>
+						</tr>
 					</table>
 				</td>
-				<td>>></td>
+				<td onclick="randomize()">>></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+		<br/> Auto-change every <input id="seconds" size="1" value="6"/> seconds. <button onclick="startTimer()">Start</button> <button onclick="stopTimer()">Stop</button> 
+				</td>
 			</tr>
 		</table>
 
-		<input type="checkbox">い-Adjectives</input>
-		<input type="checkbox">い-Adjectives</input>
 	</body>
 </html>
