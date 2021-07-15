@@ -249,22 +249,26 @@
 				["November","juuichigatsu","十一月","じゅういちがつ"],
 				["December","juunigatsu","十二月","じゅうにがつ"]]
 
-			var all = [].concat(
-				adjectives_i, 
-				adjectives_na, 
-				adverbs, 
-				sentences, 
-				verbs, 
-				animals, 
-				body_parts, 
-				colors, 
-				weather, 
-				days, 
-				months);
+
+			var all = {
+				"adjectives_i" : adjectives_i, 
+				"adjectives_na" : adjectives_na, 
+				"adverbs" : adverbs, 
+				"sentences" : sentences, 
+				"verbs" : verbs, 
+				"animals" : animals, 
+				"body_parts" : body_parts, 
+				"colors" : colors, 
+				"weather" : weather, 
+				"days" : days, 
+				"months" : months				
+			}
+
+			var words = []
 
 			function randomize() {
-				var numberOfCharacters = all.length;
-				var o = all[getRandomInt(all.length-1)];
+				var numberOfCharacters = words.length;
+				var o = words[getRandomInt(words.length-1)];
 
 				// document.getElementById("three").innerHTML = s;
 				displayObject(o);
@@ -294,6 +298,20 @@
 			 	return Math.floor(Math.random() * max);
 			}
 
+			function init() {
+				var s = "";
+				for (const [key, value] of Object.entries(all)) {
+				  console.log(key, value);
+				  words = words.concat(value);
+
+				  s += "<br><input type='checkbox' checked name='"+key+"'> "+key+" </input>";
+				}
+				
+				document.getElementById("checkboxes").innerHTML = s;
+			}
+
+			// function handle
+
 		</script>
 		<style>
 			td.focus {
@@ -316,10 +334,12 @@
 			}
 		</style>
 	</head>
-	<body>
-		<table style="width: 100%; height: 100%;text-align: center;">
+	<body onload="init()">
+		<table style="width: 100%; height: 100%; text-align: center;">
 			<tr>
-				<td><<</td>
+				<td style="text-align: left">
+					<span id="checkboxes" style="align: left;"></span>
+				</td>
 				<td style="width: 80%; background-color: ablue; text-align: center;">
 					<table style="width: 100%; background-color: apink; text-align: center;">
 						<tr>
@@ -344,7 +364,9 @@
 						</tr>
 						<tr>
 							<td>
-								<br/> Auto-change every <input id="seconds" size="1" value="6"/> seconds. <button onclick="startTimer()">Start</button> <button onclick="stopTimer()">Stop</button> 
+								<br><br><br>
+								Auto-change every <input id="seconds" size="1" value="6"/> seconds. <button onclick="startTimer()">Start</button> <button onclick="stopTimer()">Stop</button> 
+								<br>
 							</td>
 						</tr>
 					</table>
