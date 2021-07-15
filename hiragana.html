@@ -249,7 +249,18 @@
 				["November","juuichigatsu","十一月","じゅういちがつ"],
 				["December","juunigatsu","十二月","じゅうにがつ"]]
 
-			var all = [].concat(adjectives_i, adjectives_na, adverbs, sentences, verbs, animals, body_parts, colors, weather, days, months);
+			var all = [].concat(
+				adjectives_i, 
+				adjectives_na, 
+				adverbs, 
+				sentences, 
+				verbs, 
+				animals, 
+				body_parts, 
+				colors, 
+				weather, 
+				days, 
+				months);
 
 			function randomize() {
 				var numberOfCharacters = all.length;
@@ -306,7 +317,7 @@
 		</style>
 	</head>
 	<body>
-		<table style="width: 100%; text-align: center;">
+		<table style="width: 100%; height: 100%;text-align: center;">
 			<tr>
 				<td><<</td>
 				<td style="width: 80%; background-color: ablue; text-align: center;">
@@ -331,14 +342,14 @@
 								romaji
 							</td>
 						</tr>
+						<tr>
+							<td>
+								<br/> Auto-change every <input id="seconds" size="1" value="6"/> seconds. <button onclick="startTimer()">Start</button> <button onclick="stopTimer()">Stop</button> 
+							</td>
+						</tr>
 					</table>
 				</td>
 				<td onclick="randomize()">>></td>
-			</tr>
-			<tr>
-				<td colspan="3">
-		<br/> Auto-change every <input id="seconds" size="1" value="6"/> seconds. <button onclick="startTimer()">Start</button> <button onclick="stopTimer()">Stop</button> 
-				</td>
 			</tr>
 		</table>
 
