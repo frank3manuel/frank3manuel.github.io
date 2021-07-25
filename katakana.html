@@ -1,0 +1,247 @@
+<html>
+	<head>
+		<script>
+			var katakana = [
+				["", "a", "", "ア"],
+				["", "i", "", "イ"],
+				["", "u", "", "ウ"],
+				["", "e", "", "エ"],
+				["", "o", "", "オ"],
+				["", "ka", "", "カ"],
+				["", "ki", "", "キ"],
+				["", "ku", "", "ク"],
+				["", "ke", "", "ケ"],
+				["", "ko", "", "コ"],
+				["", "kya", "", "キャ"],
+				["", "kyu", "", "キュ"],
+				["", "kyo", "", "キョ"],
+				["", "sa", "", "サ"],
+				["", "shi", "", "シ"],
+				["", "su", "", "ス"],
+				["", "se", "", "セ"],
+				["", "so", "", "ソ"],
+				["", "sha", "", "シャ"],
+				["", "shu", "", "シュ"],
+				["", "sho", "", "ショ"],
+				["", "ta", "", "タ"],
+				["", "chi", "", "チ"],
+				["", "tsu", "", "ツ"],
+				["", "te", "", "テ"],
+				["", "to", "", "ト"],
+				["", "cha", "", "チャ"],
+				["", "chu", "", "チュ"],
+				["", "cho", "", "チョ"],
+				["", "na", "", "ナ"],
+				["", "ni", "", "ニ"],
+				["", "nu", "", "ヌ"],
+				["", "ne", "", "ネ"],
+				["", "no", "", "ノ"],
+				["", "nya", "", "ニャ"],
+				["", "nyu", "", "ニュ"],
+				["", "nyo", "", "ニョ"],
+				["", "ha", "", "ハ"],
+				["", "hi", "", "ヒ"],
+				["", "fu", "", "フ"],
+				["", "he", "", "ヘ"],
+				["", "ho", "", "ホ"],
+				["", "hya", "", "ヒャ"],
+				["", "hyu", "", "ヒュ"],
+				["", "hyo", "", "ヒョ"],
+				["", "ma", "", "マ"],
+				["", "mi", "", "ミ"],
+				["", "mu", "", "ム"],
+				["", "me", "", "メ"],
+				["", "mo", "", "モ"],
+				["", "mya", "", "ミャ"],
+				["", "myu", "", "ミュ"],
+				["", "myo", "", "ミョ"],
+				["", "ya", "", "ヤ"],
+				["", "yu", "", "ユ"],
+				["", "yo", "", "ヨ"],
+				["", "ra", "", "ラ"],
+				["", "ri", "", "リ"],
+				["", "ru", "", "ル"],
+				["", "re", "", "レ"],
+				["", "ro", "", "ロ"],
+				["", "rya", "", "リャ"],
+				["", "ryu", "", "リュ"],
+				["", "ryo", "", "リョ"],
+				["", "wa", "", "ワ"],
+				["", "n", "", "ン"],
+				["", "ga", "", "ガ"],
+				["", "gi", "", "ギ"],
+				["", "gu", "", "グ"],
+				["", "ge", "", "ゲ"],
+				["", "go", "", "ゴ"],
+				["", "gya", "", "ギャ"],
+				["", "guy", "", "ギュ"],
+				["", "gyo", "", "ギョ"],
+				["", "za", "", "ザ"],
+				["", "ji", "", "ジ"],
+				["", "zu", "", "ズ"],
+				["", "ze", "", "ゼ"],
+				["", "zo", "", "ゾ"],
+				["", "ja", "", "ジャ"],
+				["", "ju", "", "ジュ"],
+				["", "jo", "", "ジョ"],
+				["", "da", "", "ダ"],
+				["", "ji", "", "ヂ"],
+				["", "zu", "", "ヅ"],
+				["", "de", "", "デ"],
+				["", "do", "", "ド"],
+				["", "ba", "", "バ"],
+				["", "bi", "", "ビ"],
+				["", "bu", "", "ブ"],
+				["", "be", "", "ベ"],
+				["", "bo", "", "ボ"],
+				["", "bya", "", "ビャ"],
+				["", "byu", "", "ビュ"],
+				["", "byo", "", "ビョ"],
+				["", "pa", "", "パ"],
+				["", "pi", "", "ピ"],
+				["", "pu", "", "プ"],
+				["", "pe", "", "ペ"],
+				["", "po", "", "ポ"],
+				["", "pya", "", "ピャ"],
+				["", "pyu", "", "ピュ"],
+				["", "pyo", "", "ピョ"],
+				["", "fa", "", "ファ"],
+				["", "fi", "", "フィ"],
+				["", "fe", "", "フェ"],
+				["", "fo", "", "フォ"],
+				["", "tsa", "", "ツァ"],
+				["", "ti", "", "ティ"],
+				["", "tu", "", "トゥ"],
+				["", "we", "", "ウェ"],
+				["", "wo", "", "ウォ"]
+			]
+				
+			var all = {
+				"katakana" : katakana
+			}
+
+			var words = []
+
+			function randomize() {
+				var numberOfCharacters = words.length;
+				var o = words[getRandomInt(words.length-1)];
+
+				// document.getElementById("three").innerHTML = s;
+				displayObject(o);
+			}
+
+			function displayObject(o) {
+				document.getElementById("kanji").innerHTML = o[2];
+				document.getElementById("hiragana").innerHTML = o[3];
+				document.getElementById("english").innerHTML = o[0];
+				document.getElementById("romaji").innerHTML = o[1];
+			}
+
+			var interval = null;
+
+			function startTimer() {
+				stopTimer();
+				var seconds = document.getElementById("seconds").value;
+				interval = setInterval(randomize, seconds * 1000)
+				return interval;
+			}
+
+			function stopTimer() {
+				clearInterval(interval)
+			}
+
+			function getRandomInt(max) {
+			 	return Math.floor(Math.random() * max);
+			}
+
+			function init() {
+				var s = "";
+				for (const [key, value] of Object.entries(all)) {
+				  // console.log(key, value);
+				  words = words.concat(value);
+
+				  s += "<br><input type='checkbox' checked name='words' onclick='recompute()' value='"+key+"'> "+key+" </input>";
+				}
+				
+				document.getElementById("checkboxes").innerHTML = s;
+			}
+
+			function recompute() {
+				checkboxes = document.getElementsByName('words');
+				words = [];
+				for(var i=0, n=checkboxes.length;i<n;i++) {
+					// checkboxes[i].checked = source.checked;
+					if(checkboxes[i].checked) {
+						// console.log(checkboxes[i].value, all[checkboxes[i].value])
+						words = words.concat(all[checkboxes[i].value]);
+						// console.log(all[checkboxes[i].value])
+					}
+				}
+				// console.log(words)
+			}
+
+		</script>
+		<style>
+			td.focus {
+				font-size: 100;
+				/*font-family: "ヒラギノ角ゴ Pro W3";*/
+				/*
+				"ヒラギノ角ゴ Pro W3",
+				"Hiragino Kaku Gothic Pro",
+				Osaka, 
+				"メイリオ", 
+				Meiryo, 
+				"ＭＳ Ｐゴシック", 
+				"MS PGothic", 
+				sans-serif;
+				*/
+			}
+
+			#kanji, #english{
+				font-size: 50;
+			}
+		</style>
+	</head>
+	<body onload="init()">
+		<table style="width: 100%; height: 100%; text-align: center;">
+			<tr>
+				<td style="text-align: left">
+					<span id="checkboxes" style="align: left;"></span>
+				</td>
+				<td style="width: 80%; background-color: ablue; text-align: center;">
+					<table style="width: 100%; background-color: apink; text-align: center;">
+						<tr>
+							<td id="kanji">
+								kanji
+							</td>
+						</tr>
+						<tr>
+							<td id="hiragana" class="focus">
+								hiragana
+							</td>
+						</tr>
+						<tr>
+							<td id="english">
+								english
+							</td>
+						</tr>
+						<tr>
+							<td id="romaji">
+								romaji
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<br><br><br>
+								Auto-change every <input id="seconds" size="1" value="6"/> seconds. <button onclick="startTimer()">Start</button> <button onclick="stopTimer()">Stop</button> 
+								<br>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td onclick="randomize()" style="width: 10%; background-color: #CFEEFA; text-align: center;">>></td>
+			</tr>
+		</table>
+
+	</body>
+</html>
