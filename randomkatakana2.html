@@ -123,12 +123,33 @@
 			var words = []
 
 			function randomize() {
-				var numberOfCharacters = words.length;
-				var o = words[getRandomInt(words.length-1)];
+				var numberOfCharacters = document.getElementById("numberOfCharacters").value;
 
-				// document.getElementById("three").innerHTML = s;
-				displayObject(o);
+				var s = "";
+				for (let i = 0; i < numberOfCharacters; i++) {
+					var o = words[getRandomInt(words.length-1)];
+
+					s += o[3]
+				}
+
+				
+
+				// displayObject(o);
+				document.getElementById("katakana").innerHTML = s;
+
+
 			}
+
+			// function randomize() {
+			// 	var numberOfCharacters = document.getElementById("numberOfCharacters").value;
+			// 	var chars = document.getElementById("characters").value;
+			// 	var s = "";
+			// 	for (let i = 0; i < numberOfCharacters; i++) {
+			// 		s += chars.charAt(getRandomInt(chars.length-1))
+			// 	}
+			// 	document.getElementById("three").innerHTML = s;
+			// }
+
 
 			function displayObject(o) {
 				document.getElementById("kanji").innerHTML = o[2];
@@ -227,7 +248,7 @@
 						</tr>
 						<tr>
 							<td id="romaji">
-								romaji
+								
 							</td>
 						</tr>
 						<tr>
