@@ -1,0 +1,226 @@
+<html>
+	<head>
+		<script>
+			var katakana_1 = [
+				["", "a", "", "ア"],["", "i", "", "イ"],["", "u", "", "ウ"],["", "e", "", "エ"],["", "o", "", "オ"],
+				["", "ka", "", "カ"],["", "ki", "", "キ"],["", "ku", "", "ク"],["", "ke", "", "ケ"],["", "ko", "", "コ"],
+				["", "sa", "", "サ"],["", "shi", "", "シ"],["", "su", "", "ス"],["", "se", "", "セ"],["", "so", "", "ソ"],
+				["", "ta", "", "タ"],["", "chi", "", "チ"],["", "tsu", "", "ツ"],["", "te", "", "テ"],["", "to", "", "ト"],
+				["", "na", "", "ナ"],["", "ni", "", "ニ"],["", "nu", "", "ヌ"],["", "ne", "", "ネ"],["", "no", "", "ノ"],
+				["", "ha", "", "ハ"],["", "hi", "", "ヒ"],["", "fu", "", "フ"],["", "he", "", "ヘ"],["", "ho", "", "ホ"],
+				["", "ma", "", "マ"],["", "mi", "", "ミ"],["", "mu", "", "ム"],["", "me", "", "メ"],["", "mo", "", "モ"],
+				["", "ya", "", "ヤ"],["", "yu", "", "ユ"],["", "yo", "", "ヨ"],["", "ra", "", "ラ"],["", "ri", "", "リ"],
+				["", "ru", "", "ル"],["", "re", "", "レ"],["", "ro", "", "ロ"],["", "wa", "", "ワ"],["", "n", "", "ン"]
+			]
+
+			var katakana_2 = [
+				["", "ga", "", "ガ"],["", "gi", "", "ギ"],["", "gu", "", "グ"],["", "ge", "", "ゲ"],["", "go", "", "ゴ"],
+				["", "za", "", "ザ"],["", "ji", "", "ジ"],["", "zu", "", "ズ"],["", "ze", "", "ゼ"],["", "zo", "", "ゾ"],
+				["", "da", "", "ダ"],["", "ji", "", "ヂ"],["", "zu", "", "ヅ"],["", "de", "", "デ"],["", "do", "", "ド"],
+				["", "ba", "", "バ"],["", "bi", "", "ビ"],["", "bu", "", "ブ"],["", "be", "", "ベ"],["", "bo", "", "ボ"],
+				["", "pa", "", "パ"],["", "pi", "", "ピ"],["", "pu", "", "プ"],["", "pe", "", "ペ"],["", "po", "", "ポ"]
+			]
+
+			var katakana_3 = [
+				["", "ja", "", "ジャ"],["", "ju", "", "ジュ"],["", "jo", "", "ジョ"],["", "kya", "", "キャ"],["", "kyu", "", "キュ"],["", "kyo", "", "キョ"],
+				["", "sha", "", "シャ"],["", "shu", "", "シュ"],["", "sho", "", "ショ"],["", "cha", "", "チャ"],["", "chu", "", "チュ"],["", "cho", "", "チョ"],
+				["", "nya", "", "ニャ"],["", "nyu", "", "ニュ"],["", "nyo", "", "ニョ"],["", "hya", "", "ヒャ"],["", "hyu", "", "ヒュ"],["", "hyo", "", "ヒョ"],
+				["", "mya", "", "ミャ"],["", "myu", "", "ミュ"],["", "myo", "", "ミョ"],["", "rya", "", "リャ"],["", "ryu", "", "リュ"],["", "ryo", "", "リョ"],
+				["", "gya", "", "ギャ"],["", "guy", "", "ギュ"],["", "gyo", "", "ギョ"],["", "bya", "", "ビャ"],["", "byu", "", "ビュ"],["", "byo", "", "ビョ"],
+				["", "pya", "", "ピャ"],["", "pyu", "", "ピュ"],["", "pyo", "", "ピョ"],
+				["", "fa", "", "ファ"],["", "fi", "", "フィ"],["", "fe", "", "フェ"],["", "fo", "", "フォ"],
+				["", "tsa", "", "ツァ"],["", "ti", "", "ティ"],["", "tu", "", "トゥ"],
+				["", "we", "", "ウェ"],["", "wo", "", "ウォ"]
+			]
+
+			var hiragana_1 = [
+				["", "a", "", "あ"],["", "i", "", "い"],["", "u", "", "う"],["", "e", "", "え"],["", "o", "", "お"],
+				["", "ka", "", "か"],["", "ki", "", "き"],["", "ku", "", "く"],["", "ke", "", "け"],["", "ko", "", "こ"],
+				["", "sa", "", "さ"],["", "shi", "", "し"],["", "su", "", "す"],["", "se", "", "せ"],["", "so", "", "そ"],
+				["", "ta", "", "た"],["", "chi", "", "ち"],["", "tsu", "", "つ"],["", "te", "", "て"],["", "to", "", "と"],
+				["", "na", "", "な"],["", "ni", "", "に"],["", "nu", "", "ぬ"],["", "ne", "", "ね"],["", "no", "", "の"],
+				["", "ha", "", "は"],["", "hi", "", "ひ"],["", "fu", "", "ふ"],["", "he", "", "へ"],["", "ho", "", "ほ"],
+				["", "ma", "", "ま"],["", "mi", "", "み"],["", "mu", "", "む"],["", "me", "", "め"],["", "mo", "", "も"],
+				["", "ya", "", "や"],["", "yu", "", "ゆ"],["", "yo", "", "よ"],
+				["", "ra", "", "ら"],["", "ri", "", "り"],["", "ru", "", "る"],["", "re", "", "れ"],["", "ro", "", "ろ"],
+				["", "wa", "", "わ"],["", "(w)o", "", "を"],
+				["", "n", "", "ん"],
+
+			]
+
+			var hiragana_2 = [
+				["", "ga", "", "が"],["", "gi", "", "ぎ"],["", "gu", "", "ぐ"],["", "ge", "", "げ"],["", "go", "", "ご"],
+				["", "za", "", "ざ"],["", "ji", "", "じ"],["", "zu", "", "ず"],["", "ze", "", "ぜ"],["", "zo", "", "ぞ"],
+				["", "da", "", "だ"],["", "(ji)", "", "ぢ"],["", "(zu)", "", "づ"],["", "de", "", "で"],["", "do", "", "ど"],
+				["", "ba", "", "ば"],["", "bi", "", "び"],["", "bu", "", "ぶ"],["", "be", "", "べ"],["", "bo", "", "ぼ"],
+				["", "pa", "", "ぱ"],["", "pi", "", "ぴ"],["", "pu", "", "ぷ"],["", "pe", "", "ぺ"],["", "po", "", "ぽ"],
+			]
+
+			var hiragana_3 = [
+				["", "kya", "", "きゃ"],["", "kyu", "", "きゅ"],["", "kyo", "", "きょ"],["", "sha", "", "しゃ"],["", "shu", "", "しゅ"],["", "sho", "", "しょ"],
+				["", "cha", "", "ちゃ"],["", "chu", "", "ちゅ"],["", "cho", "", "ちょ"],["", "nya", "", "にゃ"],["", "nyu", "", "にゅ"],["", "nyo", "", "にょ"],
+				["", "hya", "", "ひゃ"],["", "hyu", "", "ひゅ"],["", "hyo", "", "ひょ"],["", "mya", "", "みゃ"],["", "myo", "", "みょ"],
+				["", "rya", "", "りゃ"],["", "ryu", "", "りゅ"],["", "ryo", "", "りょ"],
+				["", "gya", "", "ぎゃ"],["", "guy", "", "ぎゅ"],["", "gyo", "", "ぎょ"],
+				["", "ja", "", "じゃ"],["", "ju", "", "じゅ"],["", "jo", "", "じょ"],
+				["", "bya", "", "びゃ"],["", "byu", "", "びゅ"],["", "byo", "", "びょ"],
+				["", "pya", "", "ぴゃ"],["", "pyu", "", "ぴゅ"],["", "pyo", "", "ぴょ"]
+			]
+
+				
+			var all = {
+				"Katakana 1" : katakana_1,
+				"Katakana 2" : katakana_2,
+				"Katakana 3" : katakana_3,
+				"Hiragana 1" : hiragana_1,
+				"Hiragana 2" : hiragana_2,
+				"Hiragana 3" : hiragana_3,
+			}
+
+			var words = []
+
+			function randomize() {
+				var numberOfCharacters = document.getElementById("numberOfCharacters").value;
+
+				var s = "";
+				for (let i = 0; i < numberOfCharacters; i++) {
+					var o = words[getRandomInt(words.length-1)];
+
+					s += o[3]
+				}
+
+				
+
+				// displayObject(o);
+				document.getElementById("katakana").innerHTML = s;
+
+
+			}
+
+			// function randomize() {
+			// 	var numberOfCharacters = document.getElementById("numberOfCharacters").value;
+			// 	var chars = document.getElementById("characters").value;
+			// 	var s = "";
+			// 	for (let i = 0; i < numberOfCharacters; i++) {
+			// 		s += chars.charAt(getRandomInt(chars.length-1))
+			// 	}
+			// 	document.getElementById("three").innerHTML = s;
+			// }
+
+
+			function displayObject(o) {
+				document.getElementById("kanji").innerHTML = o[2];
+				document.getElementById("katakana").innerHTML = o[3];
+				document.getElementById("english").innerHTML = o[0];
+				document.getElementById("romaji").innerHTML = o[1];
+			}
+
+			var interval = null;
+
+			function startTimer() {
+				stopTimer();
+				var seconds = document.getElementById("seconds").value;
+				interval = setInterval(randomize, seconds * 1000)
+				return interval;
+			}
+
+			function stopTimer() {
+				clearInterval(interval)
+			}
+
+			function getRandomInt(max) {
+			 	return Math.floor(Math.random() * max);
+			}
+
+			function init() {
+				var s = "";
+				for (const [key, value] of Object.entries(all)) {
+				  // console.log(key, value);
+				  words = words.concat(value);
+
+				  s += "<br><input type='checkbox' checked name='words' onclick='recompute()' value='"+key+"'> "+key+" </input>";
+				}
+				
+				document.getElementById("checkboxes").innerHTML = s;
+			}
+
+			function recompute() {
+				checkboxes = document.getElementsByName('words');
+				words = [];
+				for(var i=0, n=checkboxes.length;i<n;i++) {
+					// checkboxes[i].checked = source.checked;
+					if(checkboxes[i].checked) {
+						// console.log(checkboxes[i].value, all[checkboxes[i].value])
+						words = words.concat(all[checkboxes[i].value]);
+						// console.log(all[checkboxes[i].value])
+					}
+				}
+				// console.log(words)
+			}
+
+		</script>
+		<style>
+			td.focus {
+				font-size: 100;
+				/*font-family: "ヒラギノ角ゴ Pro W3";*/
+				/*
+				"ヒラギノ角ゴ Pro W3",
+				"Hiragino Kaku Gothic Pro",
+				Osaka, 
+				"メイリオ", 
+				Meiryo, 
+				"ＭＳ Ｐゴシック", 
+				"MS PGothic", 
+				sans-serif;
+				*/
+			}
+
+			#kanji, #english{
+				font-size: 50;
+			}
+		</style>
+	</head>
+	<body onload="init()">
+		<table style="width: 100%; height: 100%; text-align: center;">
+			<tr>
+				<td style="text-align: left">
+					<span id="checkboxes" style="align: left;"></span>
+				</td>
+				<td style="width: 80%; background-color: ablue; text-align: center;">
+					<table style="width: 100%; background-color: apink; text-align: center;">
+						<tr>
+							<td id="kanji">
+								
+							</td>
+						</tr>
+						<tr>
+							<td id="katakana" class="focus">
+								kana
+							</td>
+						</tr>
+						<tr>
+							<td id="english">
+								
+							</td>
+						</tr>
+						<tr>
+							<td id="romaji">
+								
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<br><br><br>
+								Auto-change every <input id="seconds" size="1" value="6"/> seconds. <button onclick="startTimer()">Start</button> <button onclick="stopTimer()">Stop</button> 
+								<br>
+								<br/> Number of characters to display: <input id="numberOfCharacters" value="6"/>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td onclick="randomize()" style="width: 10%; background-color: #CFEEFA; text-align: center;">>></td>
+			</tr>
+		</table>
+
+	</body>
+</html>
